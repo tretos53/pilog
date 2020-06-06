@@ -20,5 +20,6 @@ if (( $# != 4 ))
 fi
 
 date=$(date +%F_%H-%M-%S)
-sudo grep -hoiIs -E '([0-9]{1,3}[\.]){3}[0-9]{1,3}' /var/log/* | sort -u >> /home/$3/$1_$date_connections.txt && sudo grep -hoiIs '[0-9A-F]\{2\}\(:[0-9A-F]\{2\}\)\{5\}' /var/log/* | sort -u >> /home/$3/$1_$date_connections.txt
-curl -T /home/$3/$1_$date_connections.txt --user $3:$4 ftp://$2
+sudo grep -hoiIs -E '([0-9]{1,3}[\.]){3}[0-9]{1,3}' /var/log/* | sort -u >> /home/$3/$1_${date}_connections.txt
+sudo grep -hoiIs '[0-9A-F]\{2\}\(:[0-9A-F]\{2\}\)\{5\}' /var/log/* | sort -u >> /home/$3/$1_${date}_connections.txt
+curl -T /home/$3/$1_${date}_connections.txt --user $3:$4 ftp://$2
